@@ -1,0 +1,14 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+nasa:
+  base-url: "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos"
+  api-key: "DEMO_KEY"
+  query-sol: "sol"
+  query-api-key: "api_key"
+  image-tag: "img_src"
+  annotation-cache: true
+
