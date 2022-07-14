@@ -18,6 +18,7 @@
 
     <modules>
         <module>nasa-images</module>
+        <module>spring-infrastructure</module>
     </modules>
 
     <properties>
@@ -37,10 +38,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
         </dependency>
     </dependencies>
 
