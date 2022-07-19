@@ -35,11 +35,10 @@ public class NasaImageService {
     }
 
     @Cacheable
-    public Optional<URI> getLargestImage(int sol) {
-        URI uri = buildUri(sol);
-        log.info("Sending request to base NASA url - {}", uri);
+    public Optional<URI> getLargestImage(URI baseUri) {
+        log.info("Sending request to base NASA url - {}", baseUri);
 
-        return Optional.ofNullable(restTemplate.getForObject(uri, JsonNode.class))
+        return Optional.ofNullable(restTemplate.getForObject(baseUri, JsonNode.class))
                 .stream()
                 .flatMap(jsonResponse -> jsonResponse.findValues(nasaProperties.imageTag())
                         .stream()
@@ -48,14 +47,6 @@ public class NasaImageService {
                 .map(this::createImageSizePair)
                 .max(Map.Entry.comparingByValue())
                 .map(Map.Entry::getKey);
-    }
-
-    private URI buildUri(int sol) {
-        return UriComponentsBuilder.fromHttpUrl(nasaProperties.baseUrl())
-                .queryParam(nasaProperties.querySol(), sol)
-                .queryParam(nasaProperties.queryApiKey(), nasaProperties.apiKey())
-                .build()
-                .toUri();
     }
 
     private Map.Entry<URI, Long> createImageSizePair(URI uri) {
