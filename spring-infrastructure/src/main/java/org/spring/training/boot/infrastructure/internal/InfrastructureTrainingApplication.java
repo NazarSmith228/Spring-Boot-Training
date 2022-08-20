@@ -8,11 +8,11 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 @EnableStringTrimming
-public class SpringBootInfrastructureApplication {
+public class InfrastructureTrainingApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication
-                .run(SpringBootInfrastructureApplication.class, args);
+                .run(InfrastructureTrainingApplication.class, args);
 
         TalkingService talkingService = context.getBean(TalkingService.class);
         String result = talkingService.talk(" Some amazing speech", "Me   and folks  ", 5);
