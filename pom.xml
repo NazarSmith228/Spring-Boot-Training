@@ -19,6 +19,7 @@
     <modules>
         <module>nasa-images</module>
         <module>spring-infrastructure</module>
+        <module>spring-kafka</module>
     </modules>
 
     <properties>
